@@ -1,4 +1,4 @@
-package org.springframework.ai.openai.samples.helloworld.simple;
+package org.springframework.ai.openai.samples.helloworld.controller;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
