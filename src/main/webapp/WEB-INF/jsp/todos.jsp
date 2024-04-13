@@ -44,7 +44,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description:</label>
-                                <input type="text" class="form-control" id="description" name="description" required>
+                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Add ToDo</button>
                         </form>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="editDescription" class="form-label">Description:</label>
-                                <input type="text" class="form-control" id="editDescription" name="description">
+                                <textarea class="form-control" id="editDescription" name="description" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
@@ -83,22 +83,32 @@
             <h2>To Do List</h2>
             <div class="todo-list">
                 <c:forEach items="${todos}" var="todo">
-                    <div class="todo-item">
-                        <div>${todo.title} - ${todo.description}</div>
-                        <div class="todo-buttons">
-                            <!-- Button for editing ToDo -->
-                            <button type="button" class="btn btn-primary edit-todo-btn" data-bs-toggle="modal" data-bs-target="#editTodoModal" data-id="${todo.id}" data-title="${todo.title}" data-description="${todo.description}">
-                                Edit
-                            </button>
-                            <!-- Button for deleting ToDo -->
-                            <form action="/delete/${todo.id}" method="post">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">${todo.title}</h5>
+                                    <p class="card-text">${todo.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="todo-buttons text-end">
+                                <!-- Button for editing ToDo -->
+                                <button type="button" class="btn btn-primary edit-todo-btn" data-bs-toggle="modal" data-bs-target="#editTodoModal" data-id="${todo.id}" data-title="${todo.title}" data-description="${todo.description}">
+                                    Edit
+                                </button>
+                                <!-- Button for deleting ToDo -->
+                                <form action="/delete/${todo.id}" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </div>
+
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
